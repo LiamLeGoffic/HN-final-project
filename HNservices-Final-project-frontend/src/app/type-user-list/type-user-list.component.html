@@ -1,0 +1,25 @@
+<app-page-title-band [title]="'User type List'"></app-page-title-band>
+
+<button [routerLink]="['/user-type-form']" class="add-user-type">
+    Add a user type
+</button>
+
+<table class="user-type-list">
+    <thead>
+        <tr class="header">
+            <th style="width: 20%;">id</th>
+            <th style="width: 30%;">User type</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let userType of userTypes">
+            <td>{{ userType.userTypeId }}</td>
+            <td>{{ userType.label.toUpperCase() }}</td>
+            <td>
+                <button class="button edit-button" [routerLink]="['/user-type-form', userType.userTypeId]">Edit</button>
+                <button class="button remove-button" (click)="deleteUserType(userType.userTypeId)">Remove</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

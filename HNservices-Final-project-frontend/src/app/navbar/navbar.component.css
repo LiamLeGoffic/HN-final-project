@@ -1,0 +1,36 @@
+.navbar {
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 20%;
+}
+
+
+.navbar-element {
+    float: center;
+    padding: 14px 20px;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: black;
+}
+
+.navbar-element.active {
+    border-top: solid #890e54ff 3px;
+    background-color: aliceblue;
+}
+
+.logo {
+    width: 80px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}

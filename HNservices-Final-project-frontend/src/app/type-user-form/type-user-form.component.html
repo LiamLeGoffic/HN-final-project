@@ -1,0 +1,17 @@
+<app-page-title-band [title]="'Add / Edit an user type'"></app-page-title-band>
+
+<form *ngIf="userType !== null" (ngSubmit)="onSubmit()">
+
+    <input class="form-input" type="text" placeholder="User type" name="label" [(ngModel)]="userType.label" required>
+    <div class="error-msg">
+        <span *ngIf="!userType.label && submitted && userTypeAlreadyExisting === null">User type is required</span>
+        <span *ngIf="!!userTypeAlreadyExisting && submitted">User type "{{ userTypeAlreadyExisting.toUpperCase() }}" already existing</span>
+        <span *ngIf="noChangesDetected && submitted">No changes detected</span>
+    </div>
+
+    <button class="save-user-type" type="submit">
+        <span *ngIf="isEditMode">Edit</span>
+        <span *ngIf="!isEditMode">Create</span>
+    </button>
+
+</form>

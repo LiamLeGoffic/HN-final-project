@@ -1,0 +1,33 @@
+<app-page-title-band [title]="'Add / Edit an user'"></app-page-title-band>
+
+<form *ngIf="user !== null" (ngSubmit)="onSubmit()">
+
+    <input class="form-input" type="text" placeholder="Last Name" name="lastName" [(ngModel)]="user.lastName" required>
+    <div class="error-msg"><span *ngIf="!user.lastName && submitted">Last Name is required</span></div>
+
+    <input class="form-input" type="text" placeholder="First Name" name="firstName" [(ngModel)]="user.firstName"
+        required>
+    <div class="error-msg"><span *ngIf="!user.firstName && submitted"> First Name is required</span></div>
+
+    <input class="form-input" type="email" placeholder="Email" name="email" [(ngModel)]="user.email" required>
+    <div class="error-msg">
+        <span *ngIf="!user.email && submitted">Email is required</span>
+        <span *ngIf="!isEmailValid(user.email) && user.email">Invalid email format</span>
+    </div>
+
+    <label class="form-label" for="userType">User Type:</label>
+    <select class="form-input" name="userType" [(ngModel)]="user.userType" required>
+        <option *ngFor="let userType of userTypes" [ngValue]="userType">{{ userType.label.toUpperCase() }}</option>
+    </select>
+    
+    <br>
+    <div class="error-msg">
+        <span *ngIf="noChangesDetected && submitted">No changes detected</span>
+    </div>
+    
+    <button class="save-user" type="submit">
+        <span *ngIf="isEditMode">Edit</span>
+        <span *ngIf="!isEditMode">Create</span>
+    </button>
+
+</form>

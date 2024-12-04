@@ -1,0 +1,53 @@
+<app-page-title-band [title]="'User List'"></app-page-title-band>
+
+<button [routerLink]="['/user-form']" class="add-user">
+    Add an user
+</button>
+
+<table class="user-list">
+    <thead>
+        <tr class="header">
+            <th class="sort-option" style="width: 20%;" (click)="applyFilter('userType.label')">
+                Type User
+                <span *ngIf="sortKey === 'userType.label'">
+                    <span *ngIf="asc">↓</span>
+                    <span *ngIf="!asc">↑</span>
+                </span>
+            </th>
+            <th class="sort-option"  style="width: 15%;" (click)="applyFilter('lastName')">
+                Name
+                <span *ngIf="sortKey === 'lastName'">
+                    <span *ngIf="asc">↓</span>
+                    <span *ngIf="!asc">↑</span>
+                </span>
+            </th>
+            <th class="sort-option"  style="width: 15%;" (click)="applyFilter('firstName')">
+                First Name
+                <span *ngIf="sortKey === 'firstName'">
+                    <span *ngIf="asc">↓</span>
+                    <span *ngIf="!asc">↑</span>
+                </span>
+            </th>
+            <th class="sort-option" style="width: 25%;" (click)="applyFilter('email')">
+                Email
+                <span *ngIf="sortKey === 'email'">
+                    <span *ngIf="asc">↓</span>
+                    <span *ngIf="!asc">↑</span>
+                </span>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of sortedUsers">
+            <td><span *ngIf="user.userType !== null">{{ user.userType.label.toUpperCase() }}</span></td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+                <button class="button edit-button" [routerLink]="['/user-form', user.userId]">Edit</button>
+                <button class="button remove-button" (click)="deleteUser(user.userId)">Remove</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

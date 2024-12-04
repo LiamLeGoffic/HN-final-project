@@ -1,0 +1,25 @@
+
+# Node.js dependencies (vous ne voulez pas inclure node_modules dans l'image Docker)
+node_modules
+
+# Fichiers de log
+*.log
+
+# Cache npm
+npm-debug.log
+yarn-error.log
+
+# Dossiers de configuration locaux
+.idea/
+.vscode/
+
+# Dossiers de tests ou de fichiers inutiles pour la production
+e2e/
+tests/
+
+# Fichiers sensibles (si vous avez des clés API ou des informations sensibles)
+*.env
+
+# Fichiers de configuration locaux qui ne sont pas nécessaires dans le conteneur
+*.git
+.git/
