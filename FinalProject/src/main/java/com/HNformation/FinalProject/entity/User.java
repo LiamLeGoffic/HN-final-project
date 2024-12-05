@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Objects;
 
@@ -29,7 +31,8 @@ public class User {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name = "user_type_id")
+    @JoinColumn(name = "user_type_id", nullable = true)
+    @OnDelete(action = OnDeleteAction.SET_NULL)
     private UserType userType;
 
     public User(String lastName, String firstName, String email, UserType userType) {
